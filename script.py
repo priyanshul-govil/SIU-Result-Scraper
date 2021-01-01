@@ -8,11 +8,19 @@ from selenium.webdriver.common.keys import Keys
 
 from PIL import Image
 
-start_prn = 19020475001
+import os
+os.mkdir("result")
+
+prn = []
 seat_num = []
 
+# MAKE CHANGE HERE
 for i in range(100501, 100530):
     seat_num.append(i)
+
+# MAKE CHANGE HERE
+for i in range(19020475001, 19020475026):
+    prn.append(i)
 
 chrome_options = webdriver.ChromeOptions()
 
@@ -23,33 +31,33 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 
 browser = webdriver.Chrome(options=chrome_options)
 
-for username in range(start_prn, start_prn + 26):
+
+for username in prn:
 
     browser.get("https://www.examination.siu.edu.in/examination/result.html")
     browser.switch_to.frame(0)
-    #count = 246
+
 
     for password in seat_num:
 
-        prn = browser.find_element_by_id("login")
-        prn.send_keys(username)
+        browser.find_element_by_id("login").send_keys(username)
 
-        nextButton = browser.find_element_by_name("Submit")
-        nextButton.click()
+        browser.find_element_by_name("Submit").click()
 
         browser.find_element_by_id("login").send_keys(password)
+
         browser.find_element_by_name("Submit").click()
 
         try:
-          WebDriverWait(browser, 2).until(EC.alert_is_present())
-          alert = browser.switch_to.alert
-          alert.accept()
+            WebDriverWait(browser, 2).until(EC.alert_is_present())
+            alert = browser.switch_to.alert
+            alert.accept()
 
         except TimeoutException:
-          break
+            break
 
-    ele=browser.find_element("xpath", '/html')
-    total_height = ele.size["height"]+1000
+    ele = browser.find_element("xpath", '/html')
+    total_height = ele.size["height"] + 1000
 
     browser.set_window_size(1920, total_height)
     browser.save_screenshot(f"./result/{username}.png")
@@ -69,3 +77,5 @@ for username in range(start_prn, start_prn + 26):
     im.save(f'./result/{username}.png')
 
     seat_num.remove(password)
+
+# END OF SCRIPT
