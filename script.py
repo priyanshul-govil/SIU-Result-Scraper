@@ -79,4 +79,7 @@ for username in prn:
 
     seat_num.remove(password)
 
+
+browser.quit()
+
 # END OF SCRIPT
