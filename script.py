@@ -15,12 +15,13 @@ prn = []
 seat_num = []
 
 # MAKE CHANGE HERE
+for i in range(19020475001, 19020475026):
+    prn.append(i)
+
+# MAKE CHANGE HERE
 for i in range(100501, 100530):
     seat_num.append(i)
 
-# MAKE CHANGE HERE
-for i in range(19020475001, 19020475026):
-    prn.append(i)
 
 chrome_options = webdriver.ChromeOptions()
 
