@@ -58,7 +58,7 @@ for username in prn:
         browser.find_element_by_name("Submit").click()
 
         if "Login failed. Please try again." in browser.page_source:
-            usernameExists = false
+            usernameExists = False
             break
 
         browser.find_element_by_id("login").send_keys(password)
