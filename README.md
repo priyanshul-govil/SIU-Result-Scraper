@@ -1,7 +1,7 @@
 # SIU Result Scraper
 Scrape [SIU result page](https://www.examination.siu.edu.in/examination/result.html) for results of your entire batch. All you need is the list of **PRNs** for which you want to find the result, and a range of possible **Seat Numbers**. 
 
-The script will then do its magic, and store all results in a directory `./result` in the form of `PNG` images. It will additionally create a file `data.cv` which will contain details of all the generated data.
+The script will then do its magic, and store all results in a directory `./result` in the form of `PNG` images. It will additionally create a file `data.csv` which will contain details of all the generated data.
 
 However, the script isn't pure magic, so wait for SIU to release the result before you start cursing the develepor.
 
