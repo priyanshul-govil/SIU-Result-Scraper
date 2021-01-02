@@ -14,12 +14,12 @@ os.mkdir("result")
 
 
 # MAKE CHANGE HERE
-start_prn = 19020475001
-end_prn = 19020475025
+start_prn = #########
+end_prn = #########
 
 # MAKE CHANGE HERE
-start_seat_num = 100501
-end_seat_num = 100530
+start_seat_num = #########
+end_seat_num = #########
 
 
 csvfile = open("./result/data.csv", "w")
@@ -113,9 +113,11 @@ for username in prn:
 
     name = browser.find_element_by_xpath("/html/body/div[3]/div/div/div/div/table/tbody/tr/td/table/tbody/tr[8]/td/table/tbody/tr/td/table/tbody/tr[3]/td[2]").text
 
-    gpa = browser.find_element_by_xpath("/html/body/div[3]/div/div/div/div/table/tbody/tr/td/table/tbody/tr[12]/td[2]").text
+    rowCount = len(browser.find_elements_by_xpath("/html/body/div[3]/div/div/div/div/table/tbody/tr/td/table/tbody/tr"))
 
-    cgpa = browser.find_element_by_xpath("/html/body/div[3]/div/div/div/div/table/tbody/tr/td/table/tbody/tr[13]/td[2]").text
+    gpa = browser.find_element_by_xpath(f"/html/body/div[3]/div/div/div/div/table/tbody/tr/td/table/tbody/tr[{rowCount - 5}]/td[2]").text
+
+    cgpa = browser.find_element_by_xpath(f"/html/body/div[3]/div/div/div/div/table/tbody/tr/td/table/tbody/tr[{rowCount - 4}]/td[2]").text
 
     csvwriter.writerow([username, password, name[3:], gpa[8:], cgpa[9:]])
 
