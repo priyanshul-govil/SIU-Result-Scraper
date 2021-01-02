@@ -6,6 +6,8 @@ from selenium.common.exceptions import TimeoutException
 
 from PIL import Image
 
+import csv
+
 
 import os
 os.mkdir("result")
@@ -19,6 +21,10 @@ end_prn = 19020475025
 start_seat_num = 100501
 end_seat_num = 100530
 
+
+csvfile = open("./result/data.csv", "w")
+csvwriter = csv.writer(csvfile)
+csvwriter.writerow(["PRN", "Seat Number", "Name", "GPA", "CGPA"])
 
 prn = []
 seat_num = []
@@ -105,7 +111,16 @@ for username in prn:
 
     seat_num.remove(password)
 
+    name = browser.find_element_by_xpath("/html/body/div[3]/div/div/div/div/table/tbody/tr/td/table/tbody/tr[8]/td/table/tbody/tr/td/table/tbody/tr[3]/td[2]").text
 
+    gpa = browser.find_element_by_xpath("/html/body/div[3]/div/div/div/div/table/tbody/tr/td/table/tbody/tr[12]/td[2]").text
+
+    cgpa = browser.find_element_by_xpath("/html/body/div[3]/div/div/div/div/table/tbody/tr/td/table/tbody/tr[13]/td[2]").text
+
+    csvwriter.writerow([username, password, name[3:], gpa[8:], cgpa[9:]])
+
+
+csvfile.close()
 browser.quit()
 
 # END OF SCRIPT
