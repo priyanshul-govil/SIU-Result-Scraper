@@ -1,10 +1,15 @@
 # SIU Result Scraper
-Scrape [SIU result page](https://www.examination.siu.edu.in/examination/result.html) for results of your entire batch. All you need is the list of **PRNs** for which you want to find the result, and a range of possible **Seat Numbers**. 
+Scrapes [SIU result page](https://www.examination.siu.edu.in/examination/result.html) for multiple results. All you need is the list of **PRNs** for which you want to find the result, and a range of possible **Seat Numbers**. 
 
 The script will then do its magic, and store all results in a directory `./result` in the form of `PNG` images. It will additionally create a file `data.csv` which will contain details of all the generated data.
 
 However, the script isn't pure magic, so wait for SIU to release the result before you start cursing the develepor.
 
+
+## USE CASES
+1. Remember your PRN but not your Seat Number? Don't worry, just choose an appropriate range and the script will find it for you.
+
+2. Want to find results for multiple people (like your friends, or even your batch!)? All you need is their PRN.
 
 ## DISCLAIMER
 This project was made for educational purposes only.
