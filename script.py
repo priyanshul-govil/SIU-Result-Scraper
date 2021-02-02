@@ -111,13 +111,9 @@ for username in prn:
 
     seat_num.remove(password)
 
-    name = browser.find_element_by_xpath("/html/body/div[3]/div/div/div/div/table/tbody/tr/td/table/tbody/tr[8]/td/table/tbody/tr/td/table/tbody/tr[3]/td[2]").text
-
-    rowCount = len(browser.find_elements_by_xpath("/html/body/div[3]/div/div/div/div/table/tbody/tr/td/table/tbody/tr"))
-
-    gpa = browser.find_element_by_xpath(f"/html/body/div[3]/div/div/div/div/table/tbody/tr/td/table/tbody/tr[{rowCount - 5}]/td[2]").text
-
-    cgpa = browser.find_element_by_xpath(f"/html/body/div[3]/div/div/div/div/table/tbody/tr/td/table/tbody/tr[{rowCount - 4}]/td[2]").text
+    name = browser.find_element_by_xpath("//*[contains(text(), 'NAME')]/../../td[2]").text
+    gpa = browser.find_element_by_xpath("//*[contains(text(), 'GPA')]/..").text
+    cgpa = browser.find_element_by_xpath("//*[contains(text(), 'CGPA')]/..").text
 
     csvwriter.writerow([username, password, name[3:], gpa[8:], cgpa[9:]])
 
